@@ -1,0 +1,3 @@
+[versions]
+org_apache_commons_text = "1.9"
+kotlin_stdlib = "1.6.10"
