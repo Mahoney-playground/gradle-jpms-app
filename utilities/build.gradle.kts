@@ -11,3 +11,9 @@ plugins {
 dependencies {
     api(project(":list"))
 }
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs = listOf(
+        "--patch-module", "uk.org.lidalia.jpmsapp.utilities=${sourceSets.main.get().output.asPath}"
+    )
+}

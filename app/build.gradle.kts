@@ -17,3 +17,9 @@ application {
     // Define the main class for the application.
     mainClass.set("uk.org.lidalia.jpmsapp.app.AppKt")
 }
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs = listOf(
+        "--patch-module", "uk.org.lidalia.jpmsapp.app=${sourceSets.main.get().output.asPath}"
+    )
+}

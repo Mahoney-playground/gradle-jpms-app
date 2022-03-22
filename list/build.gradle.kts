@@ -7,3 +7,9 @@
 plugins {
     id("uk.org.lidalia.jpmsapp.kotlin-library-conventions")
 }
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs = listOf(
+        "--patch-module", "uk.org.lidalia.jpmsapp.list=${sourceSets.main.get().output.asPath}"
+    )
+}
