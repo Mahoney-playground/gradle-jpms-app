@@ -1,6 +1,7 @@
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm")
+    id("de.jjohannes.java-module-dependencies")
 }
 
 repositories {
@@ -8,23 +9,7 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    constraints {
-        // Define dependency versions as constraints
-        implementation("org.apache.commons:commons-text:1.9")
-
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    }
-
-    // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-
-    // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
-    // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-}
+javaModuleDependencies.moduleNameToGA.put("org.apache.commons.text", "org.apache.commons:commons-text")
 
 val javaLanguageVersion = JavaLanguageVersion.of(17)
 

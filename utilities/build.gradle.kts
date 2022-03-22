@@ -10,10 +10,6 @@ plugins {
 
 val moduleName by extra("uk.org.lidalia.jpmsapp.utilities")
 
-dependencies {
-    api(project(":list"))
-}
-
 tasks.withType<JavaCompile> {
     inputs.property("moduleName", moduleName)
     options.compilerArgs = listOf(

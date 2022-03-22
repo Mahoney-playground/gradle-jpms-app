@@ -10,11 +10,6 @@ plugins {
 
 val moduleName by extra("uk.org.lidalia.jpmsapp.app")
 
-dependencies {
-    implementation("org.apache.commons:commons-text")
-    implementation(project(":utilities"))
-}
-
 application {
     // Define the main class for the application.
     mainClass.set("$moduleName.AppKt")
