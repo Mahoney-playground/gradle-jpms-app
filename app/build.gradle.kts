@@ -8,6 +8,8 @@ plugins {
     id("uk.org.lidalia.jpmsapp.kotlin-application-conventions")
 }
 
+val moduleName by extra("uk.org.lidalia.jpmsapp.app")
+
 dependencies {
     implementation("org.apache.commons:commons-text")
     implementation(project(":utilities"))
@@ -15,11 +17,12 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("uk.org.lidalia.jpmsapp.app.AppKt")
+    mainClass.set("$moduleName.AppKt")
 }
 
 tasks.withType<JavaCompile> {
+    inputs.property("moduleName", moduleName)
     options.compilerArgs = listOf(
-        "--patch-module", "uk.org.lidalia.jpmsapp.app=${sourceSets.main.get().output.asPath}"
+        "--patch-module", "$moduleName=${sourceSets.main.get().output.asPath}"
     )
 }

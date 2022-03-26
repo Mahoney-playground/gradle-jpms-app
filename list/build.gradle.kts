@@ -8,8 +8,11 @@ plugins {
     id("uk.org.lidalia.jpmsapp.kotlin-library-conventions")
 }
 
+val moduleName by extra("uk.org.lidalia.jpmsapp.list")
+
 tasks.withType<JavaCompile> {
+    inputs.property("moduleName", moduleName)
     options.compilerArgs = listOf(
-        "--patch-module", "uk.org.lidalia.jpmsapp.list=${sourceSets.main.get().output.asPath}"
+        "--patch-module", "$moduleName=${sourceSets.main.get().output.asPath}"
     )
 }
