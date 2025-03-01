@@ -1,17 +1,22 @@
+import org.gradle.api.JavaVersion.VERSION_21
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    id("de.jjohannes.java-module-dependencies")
+    id("org.gradlex.java-module-dependencies")
     id("org.jetbrains.kotlin.jvm")
 }
 
 group = "uk.org.lidalia.jpmsapp"
 val moduleName = "${project.group}.${project.name}"
 
-val javaLanguageVersion = JavaLanguageVersion.of(17)
 java {
-    toolchain.languageVersion.set(javaLanguageVersion)
+    sourceCompatibility = VERSION_21
+    targetCompatibility = VERSION_21
 }
-kotlin.jvmToolchain {
-    (this as JavaToolchainSpec).languageVersion.set(javaLanguageVersion)
+
+tasks.withType<KotlinCompile> {
+    compilerOptions.jvmTarget = JVM_21
 }
 
 // this is needed because we have a separate compile step in this example with the 'module-info.java' is in 'main/java' and the Kotlin code is in 'main/kotlin'

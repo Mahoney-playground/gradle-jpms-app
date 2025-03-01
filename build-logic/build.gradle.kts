@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation("de.jjohannes.gradle:java-module-dependencies:0.6")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
+    implementation("org.gradlex:java-module-dependencies:1.8")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10")
 }
